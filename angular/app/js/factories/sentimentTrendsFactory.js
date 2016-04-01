@@ -70,7 +70,7 @@ doesItSuck.factory('sentimentTrendsFactory', sentimentTrendsFactory);
       var listParams = [];
       var params;
       var dates = datesFactory.getTwitterDates(LASTWEEKDATES);
-      for (var i= 0; i<(dates.length); i += 2){
+      for (var i= 0; i<(dates.length); i+=2){
         params = {search_term: getSearchTerm()};
         params.date_from = dates[i];
         params.date_till = dates[i+1];

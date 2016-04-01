@@ -9,8 +9,14 @@ function dataController(storageFactory, presentationFactory){
 
   function getSearchResult(){
     var results = storageFactory.getSearchResult();
-    angular.extend(self, results);
-    presentationFactory.insertHTML(self.messages);
+    if ( results !== undefined ) {
+      angular.extend(self, results);
+      presentationFactory.insertHTML(self.messages);
+    } else {
+      self.search_term = "No search term given";
+      self.positive = 0;
+      self.negative = 0;
+    }
   }
 
 }

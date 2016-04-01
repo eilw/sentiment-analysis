@@ -1,4 +1,4 @@
-doesItSuck.factory('datesFactory', datesFactory)
+doesItSuck.factory('datesFactory', datesFactory);
 
 function datesFactory() {
 
@@ -6,9 +6,10 @@ function datesFactory() {
      getTwitterDates: function(dateRange){
       var today = new Date();
       var dates = [];
-      var newDay = new Date();
+      var newDay;
       var dd, mm, yyyy;
-      for (var i=0; i<dateRange.length; i++){
+      for (i=0; i<dateRange.length; i++){
+        newDay = new Date();
         newDay.setDate(today.getDate() - dateRange[i]);
         dd = newDay.getDate();
         mm = newDay.getMonth()+1; //January is 0!

@@ -8,6 +8,7 @@ function trendsController(sentimentTrendsFactory, presentationFactory, resultsFa
   self.chart = presentationFactory.getChart();
 
   function loadData(){
+    self.chart.data = [[0,0,0],[0,0,0],[0,0,0]];
     if (sentimentTrendsFactory.getSearchTerm() !== undefined){
       self.searchTerm = sentimentTrendsFactory.getSearchTerm();
       var promiseArr = sentimentTrendsFactory.getResults();
@@ -20,5 +21,4 @@ function trendsController(sentimentTrendsFactory, presentationFactory, resultsFa
     }
   }
   loadData();
-
 }
