@@ -3,9 +3,7 @@
 
 [![Stories in Ready](https://badge.waffle.io/rufusraghunath/crowdsource-due-diligence.png?label=ready&title=Ready)](http://waffle.io/rufusraghunath/crowdsource-due-diligence)
 
-Makers Academy final project, made collaboratively by Rufus Raghunath, Eirik Wiig, Scott Gledhill, and Jonny Pickard.
-
-View it on Heroku at https://does-it-suck.herokuapp.com/.
+Makers Academy final project, made collaboratively by Rufus Raghunath, Eirik Wiig, Scott Gledhill, and Jonny Pickard. View it on Heroku at https://does-it-suck.herokuapp.com/.
 
 ![main_search](/angular/app/images/screenshots/main_search.png)
 
@@ -27,7 +25,7 @@ When you submit a search, our app scrapes relevant social media data (Twitter) a
 
 The algorithm uses a massive library of positive and negative words, compiled by <a href="https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html#lexicon">Liu and Hu</a>. We addressed important edge cases such as sentiment negation (e.g. "not good") - full list <a href="https://github.com/rufusraghunath/crowdsource-due-diligence/blob/development/edge_cases.md">here</a>.
 
-#####Technologies used:
+#####Technologies used
 
 - AngularJS via Node.js in the front
 - angular-chart for data viz
@@ -37,14 +35,14 @@ The algorithm uses a massive library of positive and negative words, compiled by
 - Git/GitHub/Waffle for version control
 - Hosted on Heroku
 
-#####Screenshots:
+#####Screenshots
 
 ![trends](/angular/app/images/screenshots/trends.png)
 ![explore](/angular/app/images/screenshots/explore.png)
 ![compare](/angular/app/images/screenshots/compare.png)
 ![about](/angular/app/images/screenshots/about.png)
 
-#####User stories:
+#####User stories
 
 ```
 As a consumer,
@@ -77,14 +75,14 @@ So I can see my search results in context,
 I want to compare sentiment scores for different searches.
 ```
 
-#####Installation:
+#####Installation
 - clone this repo
 - inside ```/angular```, run ```bower install```, then ```npm start```
 - inside ```/rails/crowdsource-due-diligence```, run ```bundle```, then ```rails s```
 - visit ```localhost:8080``` in your browser
 - enjoy!
 
-#####Acknowledgements:
+#####Acknowledgements
 
 Thanks to Bing Liu and Minquing Hu for compiling comprehensive libraries of positive and negative valence words in their <a href='https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html#lexicon'>Opinion Lexicon</a>. This was used in processing social media input (e.g. tweets) for sentiment.
 
