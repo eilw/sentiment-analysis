@@ -71,7 +71,7 @@ doesItSuck.factory('presentationFactory', presentationFactory);
       winner = comparison[1].search_term;
       loser = comparison[0].search_term;
     } else {
-      return comparison[0] + " and " + comparison[1] + " both suck equally hard.";
+      return comparison[0].search_term + " and " + comparison[1].search_term + " both suck equally hard.";
     }
     loser = loser.charAt(0).toUpperCase() + loser.slice(1);
     return loser + " sucks worse than " + winner;
