@@ -42,10 +42,12 @@ describe SentimentAlgorithm do
   end
 
   describe '#search_term_match?' do
-    let(:p_msg) {'iphones are expensive'}
-    let(:s_msg) {'iphone is expensive'}
-    let(:s_search_term) {'iPhone'}
-    let(:p_search_term) {'iPhone'}
+    before do
+      p_msg = {content: 'iphones are expensive'}
+      s_msg = {content: 'iphone is expensive'}
+      s_search_term = 'iPhone'
+      p_search_term = 'iPhones'
+    end
 
     it 'is able to match singular search to plural results' do
       expect(algorithm.search_term_match?(p_msg, s_search_term)).to eq true
@@ -59,17 +61,17 @@ describe SentimentAlgorithm do
   describe 'edge cases' do
 
     describe 'multiple words' do
-      let(:message) {"A long time ago, in a galaxy far, far away..."}
-      let(:search_term) {"In a galaxy"}
       it 'is able to match who phrases' do
+        message = {content: "A long time ago, in a galaxy far, far away..."}
+        search_term = "In a galaxy"
         expect(algorithm.search_term_match?(message, search_term)).to be true
       end
     end
 
     describe 'false negatives' do
-      let(:tweets) {[{content: 'Pie ain\'t bad'}]}
-      let(:search) {'pie'}
-      let(:expected_results) {{ positive: 0, neutral: 1, negative: 0, search_term: 'pie' }}
+      tweets = [{content: 'Pie ain\'t bad'}]
+      search = 'pie'
+      expected_results = { positive: 0, neutral: 1, negative: 0, search_term: 'pie' }
 
       it 'does not increment negative sentiment if negated' do
         expect(algorithm.compute_total_sentiment(tweets, search)).to include expected_results
@@ -134,9 +136,9 @@ describe SentimentAlgorithm do
     describe 'double-dipping' do
 
       describe '#absolute_message_sentiment' do
-        let(:pos_msg) {'I am good, she is bad, overall good'}
-        let(:neg_msg) {'I am good, she is bad, overall bad'}
-        let(:neut_msg) {'I am good, she is bad'}
+        pos_msg = {content: 'I am good, she is bad, overall good'}
+        neg_msg = {content: 'I am good, she is bad, overall bad'}
+        neut_msg = {content: 'I am good, she is bad'}
 
         it 'finds positive' do
           algorithm.absolute_message_sentiment(pos_msg)
