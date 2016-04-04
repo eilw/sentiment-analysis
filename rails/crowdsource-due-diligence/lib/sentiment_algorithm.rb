@@ -1,4 +1,5 @@
-require_relative 'SentimentLibrary'
+require_relative 'sentiment_library'
+require_relative 'message'
 
 class SentimentAlgorithm
 
@@ -18,38 +19,44 @@ class SentimentAlgorithm
     if search_term.split(' ').length > 1
       msg.include? search_term
     else
-      words(msg).any? do |word|
-        search_term == word ||
-        search_term.pluralize == word ||
-        search_term == word.pluralize
-      end
+      words(msg).any?{|word| word_in_message?(search_term, word)}
     end
+  end
+
+  def word_in_message?(search_term, word)
+    search_term == word ||
+    search_term.pluralize == word ||
+    search_term == word.pluralize
   end
 
   def negated? word
     NEGATORS.include?(word)
   end
 
-  def is_tricky? word, lib
+  def negated_adverb? word, lib
     lib.include?(word)
   end
 
-  def enumerate_message_sentiment valence, msg
-  # TBD if negation should result in opposite valence
-    libs = get_libs(valence)
+  def keyword_matching(libs, msg)
     matches = []
     libs[:lookup].each {|word| matches << word if msg.include?(word)}
+    matches
+  end
+
+  def add_key_word(valence, word)
+    current_message[:posWords] << word if valence == :positive
+    current_message[:negWords] << word if valence == :negative
+  end
+
+  def enumerate_message_sentiment valence, msg
+    libs = get_libs(valence)
+    matches = keyword_matching(libs,msg)
     msg.each.with_index do |word, ind|
       if matches.include?(word)
-        edge_cases = [
-                      negated?(msg[ind-1]),
-                      is_tricky?(msg[ind+1], libs[:reject])
-                     ]
-        unless edge_cases.any? {|edge_case| edge_case == true }
-          current_message[valence] += 1
-          current_message[:posWords] << word if valence == :positive
-          current_message[:negWords] << word if valence == :negative
-        end
+        next if negated?(msg[ind-1])
+        next if negated_adverb?(msg[ind+1], libs[:reject])
+        current_message[valence] += 1
+        add_key_word(valence, word)
       end
     end
   end
