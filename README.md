@@ -1,11 +1,7 @@
 #Love it or leave it
 ### A web application for understanding the current sentiment of a search term through Twitter sentiment analysis
 
-[![Stories in Ready](https://badge.waffle.io/rufusraghunath/crowdsource-due-diligence.png?label=ready&title=Ready)](http://waffle.io/rufusraghunath/crowdsource-due-diligence)
-
 Makers Academy final project, made collaboratively by Rufus Raghunath, Eirik Wiig, Scott Gledhill, and Jonny Pickard. View it on Heroku at https://love-it-or-leave-it.herokuapp.com/.
-
-![main_search](/angular/app/images/screenshots/main_search.png)
 
 #####Problem statement
 
