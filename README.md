@@ -1,5 +1,5 @@
 #Love it or leave it
-### A webapp analysing the current sentiment of a search term through Twitter sentiment analysis
+### A web application for understanding the current sentiment of a search term through Twitter sentiment analysis
 
 [![Stories in Ready](https://badge.waffle.io/rufusraghunath/crowdsource-due-diligence.png?label=ready&title=Ready)](http://waffle.io/rufusraghunath/crowdsource-due-diligence)
 
@@ -9,7 +9,7 @@ Makers Academy final project, made collaboratively by Rufus Raghunath, Eirik Wii
 
 #####Problem statement
 
-Help me understand the opinion of the crowd of what I am interested in.
+Help me understand what the crowd thinks of the topic I am interested in.
 
 #####Approach
 
