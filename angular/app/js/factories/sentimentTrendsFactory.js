@@ -1,4 +1,4 @@
-doesItSuck.factory('sentimentTrendsFactory', sentimentTrendsFactory);
+loveIt.factory('sentimentTrendsFactory', sentimentTrendsFactory);
 
   sentimentTrendsFactory.$inject = ['searchFactory', 'datesFactory', 'resultsFactory', 'presentationFactory', '$q'];
 

@@ -2,7 +2,7 @@ describe('Factory: sentimentTrendsFactory', function() {
 
   var searchFactoryMock, datesFactoryMock, factory, searchPromise, resultsFactoryMock, $q, scope, httpBackend;
 
-  beforeEach(module('DoesItSuck'));
+  beforeEach(module('LoveIt'));
 
   beforeEach(function() {
     var dates = ['2016-03-20','2016-03-20','2016-03-20','2016-03-20','2016-03-20','2016-03-20'];
@@ -13,7 +13,7 @@ describe('Factory: sentimentTrendsFactory', function() {
     searchPromise = {value: 'test'};
 
 
-  module('DoesItSuck', {
+  module('LoveIt', {
     searchFactory: searchFactoryMock,
     datesFactory: datesFactoryMock,
     resultsFactory: resultsFactoryMock,

@@ -15,7 +15,7 @@ describe('trendsController', function() {
 
 var ctrl, httpBackend, scope;
 
-  beforeEach(module('DoesItSuck'));
+  beforeEach(module('LoveIt'));
   beforeEach(module('mock.trends'));
   beforeEach(inject(function($controller, $rootScope, $httpBackend, _sentimentTrendsFactory_) {
         scope = $rootScope.$new();

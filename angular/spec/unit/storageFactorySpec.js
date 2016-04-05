@@ -2,12 +2,12 @@ describe('Factory: storageFactory', function() {
 
   var factory, localStorageServiceMock, scope;
 
-  beforeEach(module('DoesItSuck'));
+  beforeEach(module('LoveIt'));
 
   beforeEach(function() {
     localStorageServiceMock = {outcome: function(){} };
 
-    module('DoesItSuck', {
+    module('LoveIt', {
       localStorageService: localStorageServiceMock
     });
   });

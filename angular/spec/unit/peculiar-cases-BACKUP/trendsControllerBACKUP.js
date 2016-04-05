@@ -3,7 +3,7 @@ describe('trendsController', function() {
 var sentimentTrendsFactoryMock, ctrl, $q, rootScope, scope, httpBackend;
 
   beforeEach(function(){
-    module('DoesItSuck');
+    module('LoveIt');
       inject(function(_$rootScope_, _$q_, $controller, $httpBackend){
         sentimentTrendsFactoryMock = {getResults: function(){} };
         scope = _$rootScope_;

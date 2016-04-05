@@ -1,4 +1,4 @@
-doesItSuck.controller('trendsController', trendsController);
+loveIt.controller('trendsController', trendsController);
 
 trendsController.$inject = ['sentimentTrendsFactory', 'presentationFactory', 'resultsFactory'];
 

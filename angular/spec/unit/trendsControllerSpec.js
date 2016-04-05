@@ -2,7 +2,7 @@ xdescribe('trendsController', function() {
 
 var sentimentTrendsFactoryMock, ctrl, $q, rootScope, scope, results;
 
-  beforeEach(module('DoesItSuck'));
+  beforeEach(module('LoveIt'));
   beforeEach(inject(function($rootScope, _$q_, $controller) {
         scope = $rootScope.$new();
         $q = _$q_;

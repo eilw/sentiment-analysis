@@ -1,7 +1,7 @@
 describe('compareController', function() {
   var ctrl, $q, searchResultMock, searchTerm, httpBackend, presentationFactoryMock, sentimentTrendsFactoryMock;
 
-  beforeEach(module('DoesItSuck'));
+  beforeEach(module('LoveIt'));
 
   beforeEach(inject(function($rootScope, _$q_, $controller, $httpBackend){
 

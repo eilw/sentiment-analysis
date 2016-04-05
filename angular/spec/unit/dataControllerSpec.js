@@ -3,7 +3,7 @@ describe('dataController', function() {
 var storageFactoryMock, ctrl, MOCK_MESSAGES, MOCK_SEARCH_RESULTS;
 var presentationFactoryMock;
 
-  beforeEach(module('DoesItSuck'));
+  beforeEach(module('LoveIt'));
 
   beforeEach(inject(function($controller) {
 

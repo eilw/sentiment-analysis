@@ -1,4 +1,4 @@
-doesItSuck.controller('searchController', searchController);
+loveIt.controller('searchController', searchController);
 
 searchController.$inject = ['$scope', '$route','searchFactory','sentimentTrendsFactory', 'storageFactory', 'presentationFactory'];
 

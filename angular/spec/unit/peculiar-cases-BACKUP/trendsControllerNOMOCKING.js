@@ -8,7 +8,7 @@ var sentimentTrendsFactoryMock, ctrl, $q, response, rootScope, scope, httpBacken
       'sentimentTrendsFactoryMock',
       ['getResults']);
 
-    module('DoesItSuck', function(){
+    module('LoveIt', function(){
       sentimentTrendsFactory: sentimentTrendsFactoryMock
     });
   });

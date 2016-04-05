@@ -1,5 +1,5 @@
-var doesItSuck = angular
-                  .module('DoesItSuck', [
+var loveIt = angular
+                  .module('LoveIt', [
                     'ngAnimate',
                     'ngResource',
                     'ngRoute',

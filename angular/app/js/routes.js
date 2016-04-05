@@ -1,4 +1,4 @@
-doesItSuck.config(['$routeProvider',
+loveIt.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/', {

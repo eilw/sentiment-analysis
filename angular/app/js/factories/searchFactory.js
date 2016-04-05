@@ -1,4 +1,4 @@
-doesItSuck.factory('searchFactory', ['$http', function($http) {
+loveIt.factory('searchFactory', ['$http', function($http) {
 
   return {
       query : function(searchParams){

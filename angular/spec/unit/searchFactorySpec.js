@@ -3,7 +3,7 @@ describe('factory: searchFactory', function() {
   var factory, searchTerm, dateFrom, dateTo, httpBackend;
 
   beforeEach(function(){
-    module('DoesItSuck');
+    module('LoveIt');
     inject(function(searchFactory, $httpBackend){
       factory = searchFactory;
       httpBackend = $httpBackend

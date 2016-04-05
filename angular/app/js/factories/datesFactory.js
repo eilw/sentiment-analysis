@@ -1,4 +1,4 @@
-doesItSuck.factory('datesFactory', datesFactory);
+loveIt.factory('datesFactory', datesFactory);
 
 function datesFactory() {
 

@@ -1,4 +1,4 @@
-doesItSuck.factory('resultsFactory', resultsFactory);
+loveIt.factory('resultsFactory', resultsFactory);
 
   resultsFactory.$inject = ['$q'];
 

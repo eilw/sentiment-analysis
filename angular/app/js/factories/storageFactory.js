@@ -1,4 +1,4 @@
-doesItSuck.factory('storageFactory', storageFactory);
+loveIt.factory('storageFactory', storageFactory);
   storageFactory.$inject = ['localStorageService'];
   function storageFactory(localStorageService) {
 

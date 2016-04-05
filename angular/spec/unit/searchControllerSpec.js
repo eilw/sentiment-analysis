@@ -3,7 +3,7 @@ describe('searchController', function() {
 var searchFactoryMock, sentimentTrendsFactoryMock, ctrl, searchTerm, $q, rootScope, scope, httpBackend, storageFactoryMock, presentationFactoryMock, searchResult;
 
 
-  beforeEach(module('DoesItSuck'));
+  beforeEach(module('LoveIt'));
 
   beforeEach(inject(function($rootScope, _$q_, $controller, $httpBackend){
     scope = $rootScope.$new();

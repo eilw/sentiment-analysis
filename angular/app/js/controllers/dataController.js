@@ -1,4 +1,4 @@
-doesItSuck.controller('dataController',dataController);
+loveIt.controller('dataController',dataController);
 
 dataController.$inject = ['storageFactory', 'presentationFactory'];
 

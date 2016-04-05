@@ -2,7 +2,7 @@ describe('Factory: presentationFactory', function() {
 
 var factory;
 
-beforeEach(module('DoesItSuck'));
+beforeEach(module('LoveIt'));
 
   beforeEach(inject(function(presentationFactory){
      factory = presentationFactory;

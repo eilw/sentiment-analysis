@@ -1,4 +1,4 @@
-doesItSuck.controller('compareController', compareController);
+loveIt.controller('compareController', compareController);
 
 compareController.$inject = ['presentationFactory','sentimentTrendsFactory'];
 

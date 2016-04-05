@@ -1,9 +1,9 @@
-doesItSuck.factory('presentationFactory', presentationFactory);
+loveIt.factory('presentationFactory', presentationFactory);
 
   function presentationFactory() {
 
-  var COLORCHOICE = {'SUCKS': 'red', 'DOESN\'T SUCK': 'green', 'MEH': 'yellow'};
-  var RESULT_TERMS = {'positive': 'DOESN\'T SUCK', 'negative': 'SUCKS', 'neutral': 'MEH'};
+  var COLORCHOICE = {'LEAVE IT': 'red', 'LOVE IT': 'green', 'MEDIOCRITY RULES': 'yellow'};
+  var RESULT_TERMS = {'positive': 'LOVE IT', 'negative': 'LEAVE IT', 'neutral': 'MEDIOCRITY RULES'};
   var SNARKY = [
                 "Oh well",
                 "Who would have thought",
@@ -11,7 +11,8 @@ doesItSuck.factory('presentationFactory', presentationFactory);
                 "Who cares",
                 "How surprising",
                 "Fantastic",
-                "How boring"
+                "Whatever",
+                "Nooo. Really?"
               ];
 
   var chart =  {colors: ['#02D606', '#FFC400', '#FF2626'],
@@ -71,10 +72,10 @@ doesItSuck.factory('presentationFactory', presentationFactory);
       winner = comparison[1].search_term;
       loser = comparison[0].search_term;
     } else {
-      return comparison[0].search_term + " and " + comparison[1].search_term + " both suck equally hard.";
+      return comparison[0].search_term + " and " + comparison[1].search_term + " are equal.";
     }
     loser = loser.charAt(0).toUpperCase() + loser.slice(1);
-    return loser + " sucks worse than " + winner;
+    return "Love " + winner + " and leave " + loser;
   }
 
   function getFullColorScheme(search) {
@@ -83,7 +84,7 @@ doesItSuck.factory('presentationFactory', presentationFactory);
   }
 
   function getColorScheme(search){
-    return (search.winner) ? COLORCHOICE['DOESN\'T SUCK'] : COLORCHOICE['SUCKS'];
+    return (search.winner) ? COLORCHOICE['LOVE IT'] : COLORCHOICE['LEAVE IT'];
   }
 
   function getFontColor(score) {

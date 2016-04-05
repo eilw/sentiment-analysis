@@ -2,7 +2,7 @@ describe('Controller: trendsController', function() {
 
 var sentimentTrendsFactoryMock, ctrl, $q, rootScope, scope, httpBackend;
 
-  beforeEach(module('DoesItSuck'));
+  beforeEach(module('LoveIt'));
 
   beforeEach(function(){
     sentimentTrendsFactoryMock = jasmine.createSpyObj(
