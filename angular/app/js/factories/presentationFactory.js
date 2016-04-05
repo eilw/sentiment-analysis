@@ -75,7 +75,7 @@ loveIt.factory('presentationFactory', presentationFactory);
       return comparison[0].search_term + " and " + comparison[1].search_term + " are equal.";
     }
     loser = loser.charAt(0).toUpperCase() + loser.slice(1);
-    return "Love " + winner + " and leave " + loser;
+    return "love " + winner + " and leave " + loser;
   }
 
   function getFullColorScheme(search) {
