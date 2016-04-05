@@ -1,15 +1,15 @@
-#Does it suck?
-###A tongue-in-cheek due diligence research engine powered by Twitter sentiment analysis
+#Love it or leave it
+### A webapp analysing the current sentiment of a search term through Twitter sentiment analysis
 
 [![Stories in Ready](https://badge.waffle.io/rufusraghunath/crowdsource-due-diligence.png?label=ready&title=Ready)](http://waffle.io/rufusraghunath/crowdsource-due-diligence)
 
-Makers Academy final project, made collaboratively by Rufus Raghunath, Eirik Wiig, Scott Gledhill, and Jonny Pickard. View it on Heroku at https://does-it-suck.herokuapp.com/.
+Makers Academy final project, made collaboratively by Rufus Raghunath, Eirik Wiig, Scott Gledhill, and Jonny Pickard. View it on Heroku at https://love-it-or-leave-it.herokuapp.com/.
 
 ![main_search](/angular/app/images/screenshots/main_search.png)
 
 #####Problem statement
 
-It's hard to gage the quality of anything before buying it. A simple tool for crowdsourcing an opinion on whether stuff sucks is in order.
+Help me understand the opinion of the crowd of what I am interested in.
 
 #####Approach
 
@@ -21,9 +21,9 @@ We also made use of Agile concepts. We held regular standups and took an "always
 
 #####How does it work?
 
-When you submit a search, our app scrapes relevant social media data (Twitter) and passes it through a custom sentiment algorithm.
+When you submit a search, our app pulls in relevant social media data (Twitter) and passes it through a custom sentiment algorithm.
 
-The algorithm uses a massive library of positive and negative words, compiled by <a href="https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html#lexicon">Liu and Hu</a>. We addressed important edge cases such as sentiment negation (e.g. "not good") - full list <a href="https://github.com/rufusraghunath/crowdsource-due-diligence/blob/development/edge_cases.md">here</a>.
+The algorithm uses a library of positive and negative words, compiled by <a href="https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html#lexicon">Liu and Hu</a>. We addressed important edge cases such as sentiment negation (e.g. "not good") - full list <a href="https://github.com/rufusraghunath/crowdsource-due-diligence/blob/development/edge_cases.md">here</a>.
 
 #####Technologies used
 
@@ -36,50 +36,53 @@ The algorithm uses a massive library of positive and negative words, compiled by
 - Git/GitHub/Waffle for version control
 - Hosted on Heroku
 
-#####Screenshots
-
-![trends](/angular/app/images/screenshots/trends.png)
-![explore](/angular/app/images/screenshots/explore.png)
-![compare](/angular/app/images/screenshots/compare.png)
-![about](/angular/app/images/screenshots/about.png)
-
 #####User stories
 
 ```
-As a consumer,
-So I can decide whether or not to invest in a product,
-I want to know whether the product has been well-received.
+As a user,
+So I can find out more about my topic,
+I want to be able to search for a search word.
 ```
 ```
-As a Does It Suck? user,
-So I can find information on the product of my choice,
-I want to enter what I'm interested in.
-```
-```
-As a Does It Suck? user,
+As a user,
 So I can easily understand my search results,
 I want to see a very simple breakdown of overall sentiment with % good, bad, and neutral.
 ```
 ```
-As an advanced Does It Suck? user,
+As a user,
 So I can see my search results in context,
 I want to see changes in sentiment over time.
 ```
 ```
-As an advanced Does It Suck? user,
-So I can see my search results in context,
-I want to see a breakdown of individual tweets.
+As a user,
+So I can inform my opinions,
+I want to know what other people think of my topic of interest.
 ```
 ```
-As an advanced Does It Suck? user,
-So I can see my search results in context,
-I want to compare sentiment scores for different searches.
+As a user,
+So I can compare one thing against another,
+I want to be able to search for two things at once.
+```
+```
+As a user,
+So I share my opinions,
+I want to be share the results through my twitter account.
+```
+```
+As a user,
+So I can see what I have searched for before,
+I want to see a list of my previous results.
+```
+```
+As a user,
+So my screen is not too cluttered,
+I want to be able to delete previous results.
 ```
 
 #####Installation
 - clone this repo
 - inside ```/angular```, run ```bower install```, then ```npm start```
-- inside ```/rails/crowdsource-due-diligence```, run ```bundle```, then ```rails s```
+- inside ```/rails/sentiment-analysis```, run ```bundle```, then ```rails s```
 - visit ```localhost:8080``` in your browser
 - enjoy!
 
