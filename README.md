@@ -1,3 +1,7 @@
+[![Code Climate](https://codeclimate.com/github/eilw/sentiment-analysis/badges/gpa.svg)](https://codeclimate.com/github/eilw/sentiment-analysis)
+
+[![Test Coverage](https://codeclimate.com/github/eilw/sentiment-analysis/badges/coverage.svg)](https://codeclimate.com/github/eilw/sentiment-analysis/coverage)
+
 #Love it or leave it
 ### A web application for understanding the current sentiment of a search term through Twitter sentiment analysis
 
