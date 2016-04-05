@@ -1,7 +1,9 @@
 #Love it or leave it
 ### A web application for understanding the current sentiment of a search term through Twitter sentiment analysis
 
-Makers Academy final project, made collaboratively by Rufus Raghunath, Eirik Wiig, Scott Gledhill, and Jonny Pickard. View it on Heroku at https://love-it-or-leave-it.herokuapp.com/.
+Makers Academy final project, made collaboratively by Rufus Raghunath, Eirik Wiig, Scott Gledhill, and Jonny Pickard. View it on Heroku at https://loveit-leaveit.herokuapp.com/.
+
+![main_search](/angular/app/images/screenshots/main.png)
 
 #####Problem statement
 
@@ -31,6 +33,13 @@ The algorithm uses a library of positive and negative words, compiled by <a href
 - RSpec, Jasmine, Karma, and Protractor for testing
 - Git/GitHub/Waffle for version control
 - Hosted on Heroku
+
+#####Screenshots
+
+![trends](/angular/app/images/screenshots/trends.png)
+![explore](/angular/app/images/screenshots/data.png)
+![compare](/angular/app/images/screenshots/compare_search.png)
+![twitter](/angular/app/images/screenshots/twitter.png)
 
 #####User stories
 
