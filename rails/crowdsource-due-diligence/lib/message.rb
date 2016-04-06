@@ -9,14 +9,14 @@ class Message
   end
 
 
-  def word_in_message?(search_term, word)
+  def same_word?(search_term, word)
     search_term == word ||
     search_term.pluralize == word ||
     search_term == word.pluralize
   end
 
   def words msg
-    msg.gsub("'", "").split(/[_\W]+/)
+    msg.delete("'").split(/[_\W]+/)
   end
 
   def contains? search_term
@@ -25,7 +25,7 @@ class Message
     if search_term.split(' ').length > 1
       msg.include? search_term
     else
-      words(msg).any?{|word| word_in_message?(search_term, word)}
+      words(msg).any?{|word| same_word?(search_term, word)}
     end
   end
 
@@ -49,6 +49,7 @@ class Message
   end
 
   def output
+    calculate_sentiment
     {sentiment: @sentiment, posWords: @posWords, negWords: @negWords, content: @content}
   end
 

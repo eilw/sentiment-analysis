@@ -22,9 +22,7 @@ class SentimentAlgorithm
   end
 
   def keyword_matching(libs, word_array)
-    matches = []
-    libs[:lookup].each {|word| matches << word if word_array.include?(word)}
-    matches
+    libs[:lookup].select {|word| word_array.include?(word)}
   end
 
   def enumerate_message_sentiment valence, msg
@@ -43,7 +41,6 @@ class SentimentAlgorithm
   def absolute_message_sentiment msg
     enumerate_message_sentiment(:positive, msg)
     enumerate_message_sentiment(:negative, msg)
-    msg.calculate_sentiment
     @results[:messages] << msg.output
     @results[msg.sentiment] += 1
   end
@@ -53,9 +50,7 @@ class SentimentAlgorithm
     @results = { positive: 0, neutral: 0, negative: 0, search_term: search_term, messages: []}
     messages.each do |msg|
       msg = Message.new(msg[:content])
-      if msg.contains?(search_term)
-        absolute_message_sentiment(msg)
-      end
+      absolute_message_sentiment(msg) if msg.contains?(search_term)
     end
     @results
   end

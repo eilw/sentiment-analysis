@@ -33,40 +33,15 @@ describe SentimentAlgorithm do
                         sentiment: :positive,
                         posWords: ['awesome'],
                         negWords: [],
-                        positive: 1,
-                        negative: 0,
                         content: 'iphone is awesome'
                       }
       expect(results[:messages]).to include msg_sentiment
     end
   end
 
-  describe '#search_term_match?' do
-    before do
-      p_msg = {content: 'iphones are expensive'}
-      s_msg = {content: 'iphone is expensive'}
-      s_search_term = 'iPhone'
-      p_search_term = 'iPhones'
-    end
 
-    it 'is able to match singular search to plural results' do
-      expect(algorithm.search_term_match?(p_msg, s_search_term)).to eq true
-    end
-
-    it 'is able to match plural search to singular result' do
-      expect(algorithm.search_term_match?(s_msg, p_search_term)).to eq true
-    end
-  end
 
   describe 'edge cases' do
-
-    describe 'multiple words' do
-      it 'is able to match who phrases' do
-        message = {content: "A long time ago, in a galaxy far, far away..."}
-        search_term = "In a galaxy"
-        expect(algorithm.search_term_match?(message, search_term)).to be true
-      end
-    end
 
     describe 'false negatives' do
       tweets = [{content: 'Pie ain\'t bad'}]
@@ -88,27 +63,7 @@ describe SentimentAlgorithm do
       end
     end
 
-    describe 'non-words' do
-      let(:tweets) {[{content:'Urijah Faber is a good fighter!'}]}
-      let(:nonsense_search) {'abe'}
-      let(:expected_results) {{ positive: 0, neutral: 0, negative: 0, search_term: 'abe' }}
-      let(:chars) {['/', '-', '_', '\\', '&', '@', '!', '?', ' ']}
 
-      it 'doesn\'t match results for partial/non-words' do
-        expect(algorithm.search_term_match?(tweets[0][:content], nonsense_search)).to be false
-      end
-
-      it 'accounts for special characters-combined words' do
-        chars.each do |char|
-          tweet = "Abe#{char}Lincoln"
-          expect(algorithm.search_term_match?(tweet, nonsense_search)).to be true
-        end
-      end
-
-      it 'returns empty results for partial/non-words' do
-        expect(algorithm.compute_total_sentiment(tweets, nonsense_search)).to include expected_results
-      end
-    end
 
     context 'tricky adverbs' do
 
@@ -167,6 +122,17 @@ describe SentimentAlgorithm do
 
       it 'only one sentiment per tweet' do
         expect(algorithm.compute_total_sentiment(tweets, search)).to include expected_results
+      end
+    end
+
+    describe 'non-words' do
+      let(:tweets) {[{content: 'Urijah Faber is a good fighter!'}]}
+      let(:nonsense_search) {'abe'}
+      let(:expected_results) {{ positive: 0, neutral: 0, negative: 0, search_term: 'abe' }}
+      let(:chars) {['/', '-', '_', '\\', '&', '@', '!', '?', ' ']}
+
+      it 'returns empty results for partial/non-words' do
+        expect(algorithm.compute_total_sentiment(tweets, nonsense_search)).to include expected_results
       end
     end
   end
