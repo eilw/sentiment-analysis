@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe SentimentAlgorithm do
+describe ResultSentiment do
 
   subject(:algorithm) { described_class.new() }
 
@@ -24,11 +24,11 @@ describe SentimentAlgorithm do
     let(:sentiment_hash) {{ positive: 3, neutral: 2, negative: 3, search_term: search_term }}
 
     it 'takes tweets and a search term and returns a sentiment hash' do
-      expect(algorithm.compute_total_sentiment(tweets, search_term)).to include sentiment_hash
+      expect(algorithm.return(tweets, search_term)).to include sentiment_hash
     end
 
-    it 'outputs keywords for each message' do
-      results = algorithm.compute_total_sentiment(tweets, search_term)
+    it 'outputs keywords for each statement' do
+      results = algorithm.return(tweets, search_term)
       msg_sentiment = {
                         sentiment: :positive,
                         posWords: ['awesome'],
@@ -49,7 +49,7 @@ describe SentimentAlgorithm do
       expected_results = { positive: 0, neutral: 1, negative: 0, search_term: 'pie' }
 
       it 'does not increment negative sentiment if negated' do
-        expect(algorithm.compute_total_sentiment(tweets, search)).to include expected_results
+        expect(algorithm.return(tweets, search)).to include expected_results
       end
     end
 
@@ -59,7 +59,7 @@ describe SentimentAlgorithm do
       let(:expected_results) {{ positive: 0, neutral: 1, negative: 0, search_term: 'celery' }}
 
       it 'does not increment positive sentiment if negated' do
-        expect(algorithm.compute_total_sentiment(tweets, search)).to include expected_results
+        expect(algorithm.return(tweets, search)).to include expected_results
       end
     end
 
@@ -73,7 +73,7 @@ describe SentimentAlgorithm do
         let(:expected_results) {{ positive: 1, neutral: 0, negative: 0, search_term: 'pizza' }}
 
         it 'positive valence not offset by negative adverb' do
-          expect(algorithm.compute_total_sentiment(tweets, search)).to include expected_results
+          expect(algorithm.return(tweets, search)).to include expected_results
         end
       end
 
@@ -83,31 +83,31 @@ describe SentimentAlgorithm do
         let(:expected_results) {{ positive: 0, neutral: 0, negative: 1, search_term: 'The Room' }}
 
         it 'negative valence not offset by positive adverb' do
-          expect(algorithm.compute_total_sentiment(tweets, search)).to include expected_results
+          expect(algorithm.return(tweets, search)).to include expected_results
         end
       end
     end
 
     describe 'double-dipping' do
 
-      describe '#absolute_message_sentiment' do
+      describe '#absolute_statement_sentiment' do
         pos_msg = {content: 'I am good, she is bad, overall good'}
         neg_msg = {content: 'I am good, she is bad, overall bad'}
         neut_msg = {content: 'I am good, she is bad'}
 
         it 'finds positive' do
-          algorithm.absolute_message_sentiment(pos_msg)
-          expect(algorithm.current_message[:sentiment]).to eq :positive
+          algorithm.calculate_sentiment(pos_msg)
+          expect(algorithm.current_statement[:sentiment]).to eq :positive
         end
 
         it 'finds negative' do
-          algorithm.absolute_message_sentiment(neg_msg)
-          expect(algorithm.current_message[:sentiment]).to eq :negative
+          algorithm.calculate_sentiment(neg_msg)
+          expect(algorithm.current_statement[:sentiment]).to eq :negative
         end
 
         it 'finds neutral' do
-          algorithm.absolute_message_sentiment(neut_msg)
-          expect(algorithm.current_message[:sentiment]).to eq :neutral
+          algorithm.calculate_sentiment(neut_msg)
+          expect(algorithm.current_statement[:sentiment]).to eq :neutral
         end
 
       end
@@ -121,7 +121,7 @@ describe SentimentAlgorithm do
       let(:expected_results) {{ positive: 1, neutral: 1, negative: 1, search_term: 'London' }}
 
       it 'only one sentiment per tweet' do
-        expect(algorithm.compute_total_sentiment(tweets, search)).to include expected_results
+        expect(algorithm.return(tweets, search)).to include expected_results
       end
     end
 
@@ -132,7 +132,7 @@ describe SentimentAlgorithm do
       let(:chars) {['/', '-', '_', '\\', '&', '@', '!', '?', ' ']}
 
       it 'returns empty results for partial/non-words' do
-        expect(algorithm.compute_total_sentiment(tweets, nonsense_search)).to include expected_results
+        expect(algorithm.return(tweets, nonsense_search)).to include expected_results
       end
     end
   end

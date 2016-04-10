@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'Search'
 
 describe Search do
   subject(:search) {described_class.new(twitterclient)}

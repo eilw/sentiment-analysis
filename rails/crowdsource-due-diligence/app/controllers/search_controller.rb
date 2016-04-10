@@ -1,4 +1,9 @@
-require_relative '../../lib/sentiment_algorithm'
+require_relative '../../lib/result_sentiment'
+# require_relative '../../lib/search'
+# require_relative '../../lib/result_analysis'
+# require_relative '../../lib/twitter_client'
+
+
 
 
 class SearchController < ApplicationController
@@ -12,7 +17,7 @@ class SearchController < ApplicationController
   def create
     search = Search.new(TwitterClient.new)
     search_result_twitter = search.twitter_search(params)
-    resultanalysis = ResultAnalysis.new(SentimentAlgorithm.new)
+    resultanalysis = ResultAnalysis.new(ResultSentiment.new)
 
     # search_result_twitter = get_fake_tweets
     results = resultanalysis.analyse_tweets(search_result_twitter, params[:"search_term"])
