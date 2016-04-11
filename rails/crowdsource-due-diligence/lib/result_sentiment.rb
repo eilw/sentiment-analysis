@@ -7,8 +7,6 @@ class ResultSentiment
   end
 
   def calculate_sentiment statement
-    statement.evaluate_sentiment(:positive)
-    statement.evaluate_sentiment(:negative)
     results[:messages] << statement.output
     results[statement.get_sentiment] += 1
   end
@@ -33,6 +31,5 @@ class ResultSentiment
   def reset_results(search_term)
     @results = { positive: 0, neutral: 0, negative: 0, search_term: search_term, messages: []}
   end
-
 
 end

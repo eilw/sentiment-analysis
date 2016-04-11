@@ -40,77 +40,9 @@ describe ResultSentiment do
   end
 
 
-
   describe 'edge cases' do
 
-    describe 'false negatives' do
-      tweets = [{content: 'Pie ain\'t bad'}]
-      search = 'pie'
-      expected_results = { positive: 0, neutral: 1, negative: 0, search_term: 'pie' }
-
-      it 'does not increment negative sentiment if negated' do
-        expect(algorithm.return(tweets, search)).to include expected_results
-      end
-    end
-
-    describe 'false positives' do
-      let(:tweets) {[{content: 'Celery isn\'t good'}]}
-      let(:search) {'celery'}
-      let(:expected_results) {{ positive: 0, neutral: 1, negative: 0, search_term: 'celery' }}
-
-      it 'does not increment positive sentiment if negated' do
-        expect(algorithm.return(tweets, search)).to include expected_results
-      end
-    end
-
-
-
-    context 'tricky adverbs' do
-
-      describe 'positive valence' do
-        let(:tweets) {[{content: 'Pizza is terribly tasty'}]}
-        let(:search) {'pizza'}
-        let(:expected_results) {{ positive: 1, neutral: 0, negative: 0, search_term: 'pizza' }}
-
-        it 'positive valence not offset by negative adverb' do
-          expect(algorithm.return(tweets, search)).to include expected_results
-        end
-      end
-
-      describe 'negative valence' do
-        let(:tweets) {[{content: 'The Room is amazingly shit'}]}
-        let(:search) {'The Room'}
-        let(:expected_results) {{ positive: 0, neutral: 0, negative: 1, search_term: 'The Room' }}
-
-        it 'negative valence not offset by positive adverb' do
-          expect(algorithm.return(tweets, search)).to include expected_results
-        end
-      end
-    end
-
     describe 'double-dipping' do
-
-      describe '#absolute_statement_sentiment' do
-        pos_msg = {content: 'I am good, she is bad, overall good'}
-        neg_msg = {content: 'I am good, she is bad, overall bad'}
-        neut_msg = {content: 'I am good, she is bad'}
-
-        it 'finds positive' do
-          algorithm.calculate_sentiment(pos_msg)
-          expect(algorithm.current_statement[:sentiment]).to eq :positive
-        end
-
-        it 'finds negative' do
-          algorithm.calculate_sentiment(neg_msg)
-          expect(algorithm.current_statement[:sentiment]).to eq :negative
-        end
-
-        it 'finds neutral' do
-          algorithm.calculate_sentiment(neut_msg)
-          expect(algorithm.current_statement[:sentiment]).to eq :neutral
-        end
-
-      end
 
       let(:tweets) {[
                       {content: 'London is good'},

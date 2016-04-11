@@ -4,7 +4,12 @@ describe Statement do
 
   subject(:statement) { described_class.new() }
 
-  describe '#search_term_match?' do
+  def helper_evaluate_sentiment(msg)
+    msg.evaluate_sentiment(:positive)
+    msg.evaluate_sentiment(:negative)
+  end
+
+  describe '#contains?' do
       let(:s_msg){Statement.new('iphone is expensive')}
       let(:p_msg) {Statement.new('iphones are expensive')}
       let(:s_search_term) {'iPhone'}
@@ -19,10 +24,35 @@ describe Statement do
     end
   end
 
+  describe '#evaluate_sentiment' do
+    pos_msg = {content: 'I am good, she is bad, overall good'}
+    neg_msg = {content: 'I am good, she is bad, overall bad'}
+    neut_msg = {content: 'I am good, she is bad'}
+
+    it 'finds positive' do
+      msg = Statement.new('I am good, she is bad, overall good')
+      helper_evaluate_sentiment(msg)
+      expect(msg.get_sentiment).to eq :positive
+    end
+
+    it 'finds negative' do
+      msg = Statement.new('I am good, she is bad, overall bad')
+        helper_evaluate_sentiment(msg)
+        expect(msg.get_sentiment).to eq :negative
+    end
+
+    it 'finds neutral' do
+      msg = Statement.new('I am good, she is bad')
+      helper_evaluate_sentiment(msg)
+      expect(msg.get_sentiment).to eq :neutral
+    end
+  end
+
+
   describe 'edge cases' do
 
     describe 'multiple words' do
-      it 'is able to match who phrases' do
+      it 'is able to match two phrases' do
         msg = Statement.new("A long time ago, in a galaxy far, far away...")
         search_term = "In a galaxy"
         expect(msg.contains?(search_term)).to be true
@@ -43,6 +73,37 @@ describe Statement do
           tweet = Statement.new("Abe#{char}Lincoln")
           expect(tweet.contains?(nonsense_search)).to be true
         end
+      end
+    end
+
+    describe 'false negatives and positives' do
+
+      it 'does not increment negative sentiment if negated' do
+        msg = Statement.new('Pie ain\'t bad')
+        helper_evaluate_sentiment(msg)
+        expect(msg.get_sentiment).to eq :neutral
+      end
+
+
+      it 'does not increment positive sentiment if negated' do
+        msg = Statement.new('Pie ain\'t bad')
+        helper_evaluate_sentiment(msg)
+        expect(msg.get_sentiment).to eq :neutral
+      end
+    end
+
+    describe 'tricky adverb edge case' do
+
+      it 'positive valence not offset by negative adverb' do
+        msg = Statement.new('Pizza is terribly tasty')
+        helper_evaluate_sentiment(msg)
+        expect(msg.get_sentiment).to eq :positive
+      end
+
+      it 'negative valence not offset by positive adverb' do
+        msg = Statement.new('Pizza is amazingly shit')
+        helper_evaluate_sentiment(msg)
+        expect(msg.get_sentiment).to eq :negative
       end
     end
   end

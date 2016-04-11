@@ -1,22 +1,12 @@
 class Word
 
-  NEGATORS = ['not', 'isnt', 'arent', 'aint', 'hardly', 'un', 'dont', 'no', 'non']
-
   attr_reader :itself
 
   def initialize(word)
     @itself = word
   end
 
-  def negated?
-    NEGATORS.include?(itself)
-  end
-
-  def is_in?(libs)
-    libs.include?(itself)
-  end
-
-  def negated_adverb? lib
+  def is_in?(lib)
     lib.include?(itself)
   end
 

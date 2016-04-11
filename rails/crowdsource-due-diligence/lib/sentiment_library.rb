@@ -1,5 +1,7 @@
 module SentimentLibrary
 
+  NEGATORS = ['not', 'isnt', 'arent', 'aint', 'hardly', 'un', 'dont', 'no', 'non']
+
   def negative_library
     file='lib/opinion_lexicon_english/negative_words.txt'
     File.readlines(file).collect{|line| line.chomp}

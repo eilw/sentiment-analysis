@@ -39,6 +39,8 @@ class Statement
 
 
   def output
+    evaluate_sentiment(:positive)
+    evaluate_sentiment(:negative)
     {sentiment: get_sentiment, posWords: @posWords, negWords: @negWords, content: @content}
   end
 
@@ -48,10 +50,11 @@ class Statement
     word_array.select { |word| word.is_in?(libs[:lookup])}
   end
 
+
   def edge_case?(word, word_array, libs)
     ind = word_array.index(word)
-    (word_array[ind-1] && word_array[ind-1].negated?) ||
-    (word_array[ind+1] && word_array[ind+1].negated_adverb?(libs[:reject]))
+    (word_array[ind-1] && word_array[ind-1].is_in?(NEGATORS)) ||
+    (word_array[ind+1] && word_array[ind+1].is_in?(libs[:reject]))
   end
 
 
