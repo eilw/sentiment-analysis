@@ -1,4 +1,4 @@
-[![Code Climate](https://codeclimate.com/github/eilw/sentiment-analysis/badges/gpa.svg)](https://codeclimate.com/github/eilw/sentiment-analysis) [![Test Coverage](https://codeclimate.com/github/eilw/sentiment-analysis/badges/coverage.svg)](https://codeclimate.com/github/eilw/sentiment-analysis/coverage)
+[![Code Climate](https://codeclimate.com/github/eilw/sentiment-analysis/badges/gpa.svg)](https://codeclimate.com/github/eilw/sentiment-analysis) 
 
 #Love it or leave it
 ### A web application for understanding the current sentiment of a search term through Twitter sentiment analysis
@@ -92,6 +92,12 @@ I want to be able to delete previous results.
 - inside ```/rails/sentiment-analysis```, run ```bundle```, then ```rails s```
 - visit ```localhost:8080``` in your browser
 - enjoy!
+
+#####Testing
+- Karma unit tests: inside: ```/angular```, run ```npm test``` 
+- Protractor feature tests: Assuming you have protractor installed -  inside: ```/angular```, run ```npm start```, then ```webdriver-manager start --standalone```, then ```npm run protractor``` 
+- Rspec unit tests: inside: ```/rails/sentiment-analysis```, run ```rspec``` 
+
 
 #####Acknowledgements
 
